@@ -1,0 +1,251 @@
+/* pages/category/category.wxss */
+@import '../../template/template.wxss';
+
+page {
+  height: 100%;
+  width: 100%;
+}
+/* 搜索样式 */
+.category_search {
+  height: 5%;
+  margin: 1% 0;
+}
+.search {
+  width: 80%;
+  height: 54rpx;
+  display: inline-block;
+  /* margin: 0 auto; */
+  margin-left: 5%;
+  font-size: 28rpx;
+  border: 2rpx solid #ccc; 
+  box-sizing:border-box;
+  padding-left: 10rpx;
+  border-radius: 25rpx;
+}
+
+.search-img {
+  height: 44rpx;
+  margin-top: 5rpx;
+  width: 7%;
+  float: left;
+}
+.search .search-input {
+  border: none;
+  outline: none;
+  padding: 0;
+  margin:0;
+  margin-left: 5rpx;
+  float: left;
+  height: 100%;
+  width: 90%;
+  font-size: 24rpx;
+}
+.searchBtn {
+  float: right;
+  width: 13%;
+  line-height: 54rpx;
+  margin-left: 2%;
+  height: 100%;
+  display: inline-block;
+  font-size: 28rpx;
+}
+/* 分类样式 */
+/* 滑块tab样式 */
+.category {
+  height: 93%;
+}
+.active {
+  color: red;
+  position: relative;
+}
+.active:after{ 
+  content: "";
+  display: block;
+  height: 8rpx;
+  width: 100%;
+  background: #4675F9;
+  position: absolute; 
+  bottom: -10rpx;
+  left: 0;
+  border-radius: 16rpx;
+}
+.category_title {
+  width: 100%;
+  height: 8%;
+}
+.second_css {
+  float: left;
+  width: 8%;
+  padding: 0 1%;
+  background: #fff;
+  height: 100%;
+  position: relative;
+}
+.list_view {
+  position: absolute;
+  left: 0;
+  top: 0 ;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 50rpx;
+  height: 50rpx;
+}
+.tabs {
+  float: left;
+  width: 90%;
+  height: 100%;  
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  padding: 1.5% 0 ; 
+}
+.tab-item {
+  display: inline-block; 
+  align-items:center; 
+  margin: 10rpx 40rpx;
+}
+ /* 隐藏滚动条  */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+/* 商品样式 */
+.tabs-content {
+  height: 92%;
+}
+.scroll-y {
+  border-top: 2rpx solid #ccc;
+}
+
+/*-------------------------------------分割线----------------------------- --*/
+ 
+ /* 一行一个商品 */
+ .details {
+  height: 200rpx;
+  width: 100%;
+  padding: 20rpx;
+  border-bottom: 2rpx solid #ccc;
+  font-size: 26rpx;
+  position: relative;
+}
+.details-left {
+  float: left;
+  width: 80%;
+  height: 100%;
+
+
+}
+.details-left .details-img {
+  height: 100%;
+  width: 200rpx;
+  float: left;
+}
+.details-desc {
+  float: left; 
+  margin-left: 5%;
+  width: 60%;
+  line-height: 40rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* 两行超出范围缺省显示 */
+.details-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: box;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.details-right {
+  float: right;
+  width: 20%;
+  padding-right: 30rpx;
+  box-sizing: border-box;
+  height: 100%;
+  text-align: center;
+  line-height: 160rpx;
+}  
+.addCart {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  right:80rpx;
+  bottom: 40rpx;
+}
+.addCart_img {
+  height: 100%;
+  width: 100%;
+}
+
+/*-------------------------------------分割线----------------------------- --*/
+
+/* 一行两个商品样式 */
+.d-details {
+  width: 370rpx;
+  float: left;
+  font-size: 28rpx;
+  border-bottom: 10rpx solid #ddd;
+  position: relative;
+} 
+.d-details:nth-child(2n) {
+  border-left: 10rpx solid #ddd;
+}
+.d-details-left {
+  width: 100%;
+  height: 580rpx;
+}
+.d-details-right {
+  margin: 4rpx 0;
+}
+.d-details-img {
+  width: 370rpx;
+  height: 370rpx;
+}
+.d-details-desc {
+  height: 180rpx;
+  padding-left: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* 两行超出范围缺省显示 */
+.d-details-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: box;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.d-addCart {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  right: 40rpx;
+  bottom: 0;
+}
+.d-addCart_img {
+  height: 100%;
+  width: 100%;
+}
+.d-addCart {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  right:40rpx;
+  bottom: 40rpx;
+}
+.d-addCart_img {
+  height: 100%;
+  width: 100%;
+}
+
+/**/

@@ -1,0 +1,37 @@
+<!--pages/goodslist/goodslist.wxml-->
+<import src="../../template/template.wxml"/>
+<template is="search" data="{{...item}}"/>
+<!-- 搜索框 -->
+<view class = "category_search">
+  <view class = "search">
+    <image src = "../libs/imgs/search.png" class = "search-img"></image>
+    <input class = "search-input" placeholder="请输入您要搜索的配件名称" bindfocus='translate' bindblur='hiddenFloatView' />
+  </view>
+  <view class = "searchBtn" bindtap='keyWord'>搜索</view> 
+</view>
+
+<!-- 排序 -->
+<view class = "goodslist_title">
+  <view class="goodslist_item goodslist-new {{currentTab == 0 ? 'active' : ''}}" data-current = "0" bindtap='changeActive'>默认</view>
+  <view class="goodslist_item goodslist-hot {{currentTab == 1 ? 'active' : ''}}" data-current = "1" bindtap='changeActive'>新品</view>
+  <view class="goodslist_item goodslist-price {{currentTab == 2 ? 'active' : ''}}" data-current = "2" bindtap='changeActive'>销量
+    <text class = "up-and-down priceUp"></text>
+    <text class = "up-and-down priceDown"></text>
+    <!-- <text class="priceUp"></text>
+    <text class="priceDown"></text> -->
+  </view>
+  <view class="goodslist_item goodslist-filter {{currentTab == 3 ? 'active' : ''}}" data-current = "3" bindtap='changeActive'>价格</view>
+</view>
+<view class = "details" wx:for = "{{list}}" wx:key = "index">
+  <view class = "details-left">
+    <image class = "details-img" src="{{imgUrl+item.imgurl}}"  data-id = "{{item.ID}}" bindtap='toDetail'></image>
+    <view class = "details-desc">
+      <view class = "details-name">{{item.name}}</view>
+      <view class = "details-sales">{{'已售： '+item.sales+' 件'}}</view>
+    </view>
+  </view>
+  <view class = "details-right details-price">￥{{item.nowPrice}}</view>
+  <!-- <view class = "addCart">
+    <image class = "addCart_img" src = "../libs/imgs/add.png" bindtap='addCart' data-id = "{{item.ID}}"></image>
+  </view> -->
+</view>

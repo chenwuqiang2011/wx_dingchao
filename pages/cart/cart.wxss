@@ -1,0 +1,214 @@
+/* pages/cart/cart.wxss */
+page{
+  height: 100%;
+}
+.scroll {
+  padding-bottom: 90rpx;
+  box-sizing: border-box;
+  height: 100%;
+}
+.details {
+  height: 200rpx;
+  width: 100%;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #ccc;
+  font-size: 26rpx;
+  position: relative; 
+  display:flex;
+  justify-content:space-between;
+  overflow:hidden; 
+}
+.slide {
+  width: 100%;
+  height: 100%; 
+
+  /* padding:10px; */
+  /* line-height:22px; */
+  margin-right:0;
+  -webkit-transition:all 0.4s;
+  transition:all 0.4s;
+  -webkit-transform:translateX(90px);
+  transform:translateX(90px);
+  margin-left:-90px;
+}
+.del {
+  background-color: orangered;
+  width: 180rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  -webkit-transform: translateX(180rpx);
+  transform: translateX(180rpx);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.touch-move-active .slide,
+.touch-move-active .del {
+ -webkit-transform: translateX(0);
+ transform: translateX(0);
+}
+
+.details-left {
+  float: left;
+  width: 80%;
+  height: 100%;
+}
+.details-left .details-img {
+  height: 100%;
+  width: 200rpx;
+  float: left;
+}
+.details-img {
+  margin-left: 60rpx;
+  
+}
+.select {
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  /* left: 20rpx; */
+  top: 75rpx;
+}
+.select_img, .unselect_img {
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.details-desc {
+  float: left;
+  height: 100%;
+  width: 45%;
+  margin-left: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* 两行缺省 */
+.details-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: box;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.details-right {
+  float: right;
+  width: 20%;
+  /* padding-right: 70rpx; */
+  margin-top: 30rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.addCart {
+  width: 184rpx;
+  height: 60rpx;
+  position: absolute;
+  right:20rpx;
+  bottom: 20rpx;
+  border: 2rpx solid #ddd;
+}
+.plus, .num, .sub {
+  float: left;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+}
+
+.plus1, .plus2, .sub1, .sub2 {
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin-left: 20%;
+  margin-top: 20%;
+}
+.num {
+  border-left: 2rpx solid #ddd;
+  border-right: 2rpx solid #ddd;
+}
+.num input {
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+
+/* 底部固定栏 */
+.bottom_fixed {
+  height: 90rpx; 
+  width: 100%;
+  font-size: 28rpx;
+  position: fixed; 
+  bottom: 0;
+  left: 0;
+  border-top: 2rpx solid #ddd;
+  background: #fff;
+}
+.bottom_left {
+  float: left;
+  width: 70%;
+  height: 50rpx;
+  margin-top: 20rpx;
+}
+.select_text {
+  float: left;
+  height: 50rpx;
+  margin-left: 40rpx;
+  line-height: 50rpx;
+  margin-right: 40rpx;
+}
+.total {
+  height: 50rpx;
+  line-height: 50rpx;
+  float: left;
+  width: 325rpx;
+  overflow: hidden;
+}
+.selectAll, .unselectAll {
+  float: left;
+  width: 50rpx;
+  height: 50rpx;
+  /* margin-top: 5rpx; */
+  margin-left: 15rpx;
+}
+.bottom_right {
+  float: right;
+  width: 25%;
+  margin-right: 5%;
+  height: 70rpx;
+  line-height: 70rpx;
+  margin-top: 10rpx;
+  background: red;
+  color: #fff;
+  text-align: center;
+  border-radius: 5rpx;
+}
+
+/* 购物车为空样式 */
+.empty {
+  position: fixed;
+  left: 0;
+  top: 100rpx; 
+  right:0;
+  margin: auto;
+  width: 200rpx;
+  height: 400rpx;
+  color: #aaa;
+  font-size: 32rpx;
+}
+.empty_img {
+  height: 200rpx;
+  width: 200rpx;
+  border-bottom: 5rpx solid #ddd;
+  padding-bottom: 10rpx;
+  margin-bottom: 10rpx;
+}

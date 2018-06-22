@@ -1,0 +1,131 @@
+<!--model.wxml-->
+<template name="msgItem">
+  <view class = 'centerText'>
+    <text> {{index}}: {{msg}} </text>
+    <text> Time: {{time}} </text>
+  </view>
+</template>
+
+<!-- --------------分割线------------- -->
+
+<template name="areaData">
+  <view class="animation-element-wrapper" animation="{{animation}}" style="visibility:{{show ? 'visible':'hidden'}}" bindtap="hiddenFloatView" data-id="444">
+     <view class="animation-element" catchtap="nono">
+        <text class="left-bt" catchtap="hiddenFloatView" data-id="555">取消</text>
+        <text class="right-bt" catchtap="hiddenFloatView" data-id="666">确定</text>
+          <view class="line"></view> 
+
+        <picker-view indicator-style = "height: 50rpx;" value="{{value}}" bindchange="bindChange" catchtap="nono">
+        <!--省-->
+        <picker-view-column>
+           <view wx:for="{{provinces}}" wx:for-item="sheng" wx:key="">
+             {{sheng.name}}
+          </view>
+        </picker-view-column>
+        <!--地级市-->
+        <picker-view-column>
+          <view wx:for="{{citys}}" wx:for-item="shi" wx:key="">
+            {{shi.name}}
+          </view>
+        </picker-view-column>
+        <!--区县-->
+        <picker-view-column>
+          <view wx:for="{{countys}}" wx:for-item="xian" wx:key="">
+            {{xian.name}}
+          </view>
+        </picker-view-column>
+        </picker-view>
+    </view>
+  </view>
+</template>
+
+<!-- --------------分割线，一行两个商品------------- -->
+
+<template name = "double">
+    <view class = "d-details-left">
+      <image class = "d-details-img" src="http://www.cwq888.cn/image/{{imgurl}}"  data-id = "{{ID}}" bindtap='toDetail'></image>
+      <view class = "d-details-desc">
+        <view class = "d-details-name">{{name}}</view>
+        <view class = "d-details-sales">{{'已售： '+sales+' 件'}}</view>
+        <view class = "d-details-right d-details-price">￥{{nowPrice}}</view>
+      </view>
+    </view>
+    <view class = "d-addCart">
+      <image class = "d-addCart_img" src = "../libs/imgs/add.png" bindtap='addCart' data-id = "{{ID}}"></image>
+    </view>
+
+</template>
+
+<!-- --------------分割线------------- -->
+
+<template name = "single">
+    <view class = "s-details-left">
+      <image class = "s-details-img" src="http://www.cwq888.cn/image/{{imgurl}}"  data-id = "{{ID}}" bindtap='toDetail'></image>
+      <view class = "s-details-desc">
+        <view class = "s-details-name">{{name}}</view>
+        <view class = "s-details-sales">{{'已售： '+sales+' 份'}}</view>
+      </view>
+    </view>
+    <view class = "s-details-right s-details-price">￥{{nowPrice}}</view>
+    <view class = "addCart">
+      <image class = "addCart_img" src = "../libs/imgs/add.png" bindtap='addCart' data-id = "{{ID}}"></image>
+    </view>
+
+</template>
+
+<!-- --------------分割线------------- -->
+
+<template name = "paid">
+   <view class = "paid-wrapper" animation = "{{animationData}}" style="visibility:{{show ? 'visible':'hidden'}}" bindtap="hiddenFloatView">
+    <view class = "paid-element" catchtap='no'>
+      <view class = "paid-method" >
+        选择支付方式
+        <image class = "delete" src = "../libs/imgs/delete.png" bindtap="hiddenFloatView"></image>
+      </view>
+      <view class = "paid-wx" data-name = "微信支付"  bindtap="hiddenFloatView">
+        微信支付
+        <image class = "wx" src = "../libs/imgs/wx.png"></image>
+        <image wx:if = "{{select}}" class = "select" src = "../libs/imgs/select.png"></image>
+        <image wx:else class = "unselect" src = "../libs/imgs/unselect.png"></image>  
+      </view>
+       <view class = "paid-union" data-name = "银联支付" bindtap="hiddenFloatView">
+        银联支付
+        <image class = "union" src = "../libs/imgs/union.png"></image>
+        <image wx:if = "{{!select}}" class = "select" src = "../libs/imgs/select.png"></image>
+        <image wx:else class = "unselect" src = "../libs/imgs/unselect.png"></image>
+      </view> 
+      <!-- <view class = "paid-alipay" data-name = "alipay">
+        支付宝支付
+        <image class = "alipay" src = "../libs/imgs/alipay.png"></image>
+        <image class = "select" src = "../libs/imgs/select.png"></image>
+        <image class = "unselect" src = "../libs/imgs/unselect.png"></image>
+      </view> -->
+    </view>
+   </view>
+</template>
+
+<!-- --------------分割线------------- -->
+
+<template name = "express">
+   <view class = "paid-wrapper" animation = "{{animationData}}" style="visibility:{{show ? 'visible':'hidden'}}" bindtap="hiddenFloatView">
+    <view class = "paid-element" catchtap='no'>
+      <view class = "paid-method" >
+        选择快递方式
+        <image class = "delete" src = "../libs/imgs/delete.png" bindtap="hiddenFloatView"></image>
+      </view>
+      <view class = "paid-wx" data-name = " 快递 免运费"  bindtap="hiddenFloatView">
+        快递 免运费
+        <image class = "wx" src = "../libs/imgs/receiving.png"></image>
+        <image class = "select" src = "../libs/imgs/select.png"></image>
+      </view>
+    </view>
+   </view>
+</template>
+
+<!-- --------------分割线------------- -->
+
+<template name = "search">
+   <view class = "search-wrapper" animation = "{{animationData}}" style="visibility:{{show ? 'visible':'hidden'}}" bindtap="hiddenFloatView">
+    
+   </view>
+</template>

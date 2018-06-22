@@ -1,0 +1,91 @@
+/* pages/address/address.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.address {
+  flex: 1;
+  height: 80%;
+  background: #eee;
+}
+/* 地址样式 */
+.addressList {
+  /* height: 200rpx; */
+  font-size: 28rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.detail, .recieve {
+  height: 60rpx;
+  line-height: 60rpx; 
+  padding: 0 20rpx;
+}
+.detail_name{
+  float: left;
+  height: 100%;
+  line-height: 60rpx;
+}
+.detail_tel {
+  float: right;
+  height: 100%;
+  line-height: 60rpx;
+}
+.default {
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 20rpx;
+  border-top: 2rpx solid #ddd;
+}
+.select {
+  float: left;
+  height: 100%;
+  line-height: 80rpx;
+}
+.select_img{
+  width: 30rpx;
+  height: 30rpx;
+}
+.edit_img, .del_img {
+  width: 28rpx;
+  height: 28rpx;
+  margin: 0 20rpx;
+}
+.edit_del {
+  float: right;
+  height: 100%;
+  line-height: 80rpx;
+}
+.edit {
+  float: left;
+}
+.del {
+  float: right;
+}
+
+/* 底部样式 */
+.address_fixed {
+  width: 100%;
+  height: 120rpx;
+  background: #fff;
+  position: relative;
+  border-top: 2rpx solid #ddd;
+}
+.addAddress{
+  display: block;
+  width: 50%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 10rpx;
+  font-size: 32rpx;
+  text-align: center;
+  background: red;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}

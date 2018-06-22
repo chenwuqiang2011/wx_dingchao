@@ -1,0 +1,62 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class = "order_status">
+  <text class = "status">{{detail.status}}</text>
+  <image class = "status_img" src = "../libs/imgs/orders.jpg"></image>
+</view>
+<view class = "addressList" wx:for = "{{detail.address}}" wx:key = "{{index}}" >
+  <view class = "express">配送方式：{{detail.express}}</view> 
+  <view class = "detail">
+    <text class = "detail_name">收货人：{{item.name}}</text>
+    <text class = "detail_tel">收货电话：{{item.tel}}</text>
+  </view>
+  <view class = "recieve">
+    收货地址：{{item.province}}{{item.city}}{{item.county}}{{item.detail}}
+  </view>
+  <image class = "envelope" src = "../libs/imgs/envelope.png"></image>
+</view>
+<view class = "logistics" bindtap = "logistics">
+  查看物流详情
+   <image class = "right" src = "../libs/imgs/right.png"></image> 
+</view>
+<!-- 商品列表 -->
+<view class = "goods" wx:for = "{{detail.goods}}" wx:key = "{{index}}"  data-id = "{{item.ID}}" bindtap="toDetail">
+  <image class = "goods_img" src = "{{imgUrl + item.imgurl}}"></image>
+  <view class = "goods_detail">
+    <view class = "goods_name">{{item.name}}</view>
+    <view class = "goods_qty">数量：{{item.qty}}</view>
+    <view class = "goods_price">￥{{item.nowPrice}}</view>
+  </view>
+</view>
+<!-- 订单金额 -->
+<view class = "total_price">
+  商品金额 
+  <text class = "price">￥{{detail.price}}</text>
+</view>
+<!-- 运费 -->
+<view class = "fare">
+  运费
+  <text class = "freight">￥0.00</text>
+</view>
+<!-- 实付金额 -->
+<view class = "total_price">
+  实付金额 
+  <text class = "price">￥{{detail.price}}</text>
+</view>
+<!-- 联系我们 -->
+<view class = "contact" bindtap = "contact">
+  <image class = "contact_us" src = "../libs/imgs/contact.png"></image>
+  联系我们
+</view>
+<!-- 订单编号、下单时间 -->
+<view class = "about">
+  <view class = "order_code">订单编号：{{detail.orderNo}}</view>
+  <view class = "createTime">下单时间：{{detail.createTime}}</view>
+  <view class = "completeTime" wx:if = "{{detail.completeTime}}">完成时间：{{detail.completeTime}}</view>
+</view>
+
+<view class = "fixed" wx:if = "{{detail.status == '待支付'||detail.status == '待评价'||detail.status == '待收货'}}">
+  <view class = "close" bindtap = "close" wx:if = "{{detail.status == '待支付'}}" data-status = '4'>关闭订单</view>
+  <view class = "paid" bindtap = "goToPaid" wx:if = "{{detail.status == '待支付'}}">去支付</view>
+  <view class = "paid" bindtap = "goToPaid" wx:if = "{{detail.status == '待评价'}}">去评价</view>
+  <view class = "paid" bindtap = "close" wx:if = "{{detail.status == '待收货'}}" data-status = '3'>确认收货</view>
+</view>

@@ -1,0 +1,73 @@
+<!--pages/acount/acount.wxml-->
+<import src="../../template/template.wxml"/>
+
+<scroll-view scroll-y = "true" class = "acount">
+<!-- 收货人地址 -->
+  <view class = "addAddress" wx:if = "{{addressList.length <= 0}}" bindtap = "toAddressList">
+    请添加地址
+    <image class = "right" src = "../libs/imgs/right.png"></image>
+  </view>
+  
+  <view class = "addressList" wx:for = "{{addressList}}" wx:key = "{{index}}" bindtap = "toAddressList">
+    <view class = "detail">
+      <text class = "detail_name">收货人：{{item.name}}</text>
+      <text class = "detail_tel">收货电话：{{item.tel}}</text>
+    </view>
+    <view class = "recieve">
+      收货地址：{{item.province}}{{item.city}}{{item.county}}{{item.detail}}
+    </view>
+    <image class = "right" src = "../libs/imgs/right.png"></image>
+    <image class = "envelope" src = "../libs/imgs/envelope.png"></image>
+  </view>
+  <!-- 商品列表 -->
+  <view class = "goodslist">
+    <view class = "details" wx:for = "{{cart}}" wx:key = "{{index}}" wx:if = "{{item.isSelect}}">
+      <view class = "details-left">
+        <image class = "details-img" src="{{imgUrl+item.imgurl}}"  data-id = "{{item.ID}}" bindtap='toDetail'></image>
+        <view class = "details-desc">
+          <view class = "details-name">{{item.name}}</view>
+          <view class = "details-sales details-price ">￥{{item.nowPrice}}</view>
+        </view>
+      </view>
+      <view class = "details-right details-sales">x {{item.qty}}</view>
+    </view> 
+  </view>
+  <!-- 配送方式 -->
+  <view class = "send" bindtap="translate" data-name = "express">
+    配送方式
+    <text class = "send_select">{{express}}</text>
+    <image class = "send_right" src = "../libs/imgs/right.png"></image>
+  </view>
+  <!-- 支付方式 -->
+  <view class = "paid" bindtap="translate" data-name = "paid">
+  
+    支付方式
+    <text class = "paid_select">{{paid}}</text>
+    <image class = "paid_right" src = "../libs/imgs/right.png"></image>
+  </view>
+  <!-- 买家留言 -->
+  <view class = "msg">
+    买家留言
+    <input class = "msg_write" placeholder='选填' bindblur='getMsg'/>
+  </view>
+  <!-- 商品数量 -->
+  <view class = "count">
+    共 <text class = "num">{{qty}}</text> 件商品 总计：￥
+    <text class = "price">{{price}}</text>
+  </view>
+</scroll-view>
+
+<!-- 底部按钮 -->
+<view class = "bottom">
+  <view class = "total">
+    实付: <text class = "totalPrice">￥{{price}}</text>
+  </view>
+  <view class = "submit" bindtap = "acount">
+    提交订单
+  </view>
+</view>
+
+<template is="{{flag?'paid': 'express'}}" data="{{...item}}"/>
+<!-- <template is="express" data="{{...item}}"/> -->
+
+

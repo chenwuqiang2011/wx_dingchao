@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/category/category",
+    "pages/cart/cart",
+    "pages/info/info",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/goods/goods",
+    "pages/address/address",
+    "pages/add/add",
+    "pages/order/order",
+    "pages/acount/acount",
+    "pages/orderDetail/orderDetail",
+    "pages/logistics/logistics",
+    "pages/goodslist/goodslist",
+    "pages/map/map"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f55a4b",
+    "navigationBarTitleText": "广州鼎超电子科技",
+    "navigationBarTextStyle": "#fff",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "主页",
+        "iconPath": "pages/libs/imgs/index.png",
+        "selectedIconPath": "pages/libs/imgs/index_on.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "pages/libs/imgs/category.png",
+        "selectedIconPath": "pages/libs/imgs/category_on.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "pages/libs/imgs/cart.png",
+        "selectedIconPath": "pages/libs/imgs/cart_on.png"
+      },
+      {
+        "pagePath": "pages/info/info",
+        "text": "我",
+        "iconPath": "pages/libs/imgs/info.png",
+        "selectedIconPath": "pages/libs/imgs/info_on.png"
+      }
+    ]
+  },
+  "plugins": {
+    "myPlugin": {
+      "version": "1.0.6",
+      "provider": "wx5bc2ac602a747594"
+    }
+  }
+}

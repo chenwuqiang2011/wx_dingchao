@@ -1,0 +1,37 @@
+<!-- 引入地址模板 -->
+<import src="../../template/template.wxml"/>
+<template is="areaData" data="{{...item}}"/>
+
+<view class = "list">
+  <text class = "text name">姓名</text>
+  <input  class = "input name_input" placeholder='请输入' data-name = "name" bindinput='bindinput'/>
+</view>
+<view class = "list">
+  <text class = "text tel" type = "idcard">联系电话</text>
+  <input  class = "input tel_input" type="number" maxlength='11' placeholder='请输入' data-name = "tel" bindinput='bindinput' bindblur='bindblur'/>
+</view>
+<view class = "list " bindtap="translate">
+  <text class = "text address">地址：</text>
+  <text class = "input animation-button" >{{address.province}} {{address.city}} {{address.county}}</text>
+  <image class = "right" src = "../libs/imgs/right.png"></image>
+</view>
+<view class = "detail"> 
+  <textarea wx:if = "{{show}}" class = "detail_input" placeholder='请填写详细地址' data-name = "detail" bindinput='bindinput'></textarea>
+</view>
+<view class = "list">
+  <text class = "text post">邮政编码</text>
+  <input  class = "input post_input" placeholder='（选填）' data-name = "post" bindinput='bindinput' />
+</view>
+<view class = "list">
+  <text class = "text">默认地址</text>
+  <switch class = "selected_default" checked = "{{address.checked}}" bindchange="switchChange"/>
+</view>
+<button class = "save" bindtap = "save">保存</button>
+
+
+<!-- 引入地址模板 -->
+<!-- <view class = "address" bindtap="translate">
+  <text class = "address_text">地址：</text>
+  <text class = "infoText animation-button" >{{province}} {{city}} {{county}}</text>
+</view>
+<template is="areaData" data="{{...item}}"/> -->

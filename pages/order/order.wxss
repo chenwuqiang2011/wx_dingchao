@@ -1,0 +1,119 @@
+/* pages/order/order.wxss */
+/* 当前用户没有订单时； */
+.none {
+  width: 100%;
+  height: 100%;
+  font-size: 34rpx;
+}
+.tips {
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 34rpx;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+/* 当前用户存在订单时； */
+page {
+  font-size: 28rpx;
+  background: #ddd;
+}
+.orders {
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  background: #fff;
+}
+.time {
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-bottom: 2rpx solid #ddd;
+}
+.createTime {
+  float: left;
+  width: 80%;
+  height: 100%;
+  line-height: 60rpx;
+}
+.status {
+  float: right;
+  width: 20%;
+  height: 100%;
+  line-height: 60rpx;
+  text-align: right;
+  /* padding-right: 20rpx; */
+  box-sizing: border-box;
+  color: red;
+}
+.goods {
+  padding: 20rpx;
+  height: 120rpx;
+  white-space: nowrap;
+  width: 670rpx;
+}
+.more {
+  display: inline-block;
+}
+.imgs {
+  height: 120rpx;
+  width: 120rpx;
+  float: left;
+  margin-right: 20rpx;
+}
+.details {
+  float: left;
+  height: 120rpx;
+  width: 530rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* 两行缺省 */
+.name {
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  display: box;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.total {
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  position: relative;
+}
+.num {
+  height: 100%;
+}
+.toPaid {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 140rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  border: 2rpx solid red;
+  text-align: center;
+  color: red;
+}
+
+.none {
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 34rpx;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}

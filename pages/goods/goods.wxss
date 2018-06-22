@@ -1,0 +1,171 @@
+/* pages/goods/goods.wxss */
+.lf {
+  float: left;
+}
+.rf {
+  float: right;
+}
+.goods {
+  font-size: 28rpx;
+  margin-bottom: 80rpx;
+}
+.goods_img {
+  width: 640rpx;
+  margin: 0 auto;
+  height: 640rpx;
+  margin-bottom: 20rpx;
+}
+.lamp_img {
+  position: absolute;
+  left: 0;
+  /* top: 0; */
+  right: 0;
+  /* bottom: 0; */
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+.goods_desc {
+  width: 100%;
+  /* height: 200rpx; */
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-top: 10rpx solid #ddd;
+  border-bottom: 10rpx solid #ddd;
+}
+.goods_name {
+  font-size: 32rpx;
+}
+.goods_category {
+  color: #a5a5a5;
+  margin: 20rpx 0;
+}
+.goods_price {
+  overflow: hidden;
+}
+.price {
+  color: red;
+}
+.price:before {
+  content: '￥';
+}
+.goods_details {
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 20rpx solid #ddd;
+}
+.color {
+  display: inline-block;
+  width: 120rpx;
+  margin: 20rpx;
+
+  text-align: center;
+  height: 100%;
+  line-height: 80rpx;
+  border: 2rpx solid #ddd;
+  border-radius: 10rpx;
+}
+.active {
+  background: #000;
+  color: #fff;
+}
+.tabs-content {
+ height: 3500rpx;
+}
+.tabItem {
+  display: inline-block;
+  text-align: center;
+  width: 50%;
+}
+.active1 {
+  color: red;
+  position: relative;
+}
+.active1:after{ 
+  content: "";
+  display: block;
+  height: 4rpx;
+  width: 100%;
+  background: #ddd;
+  position: absolute; 
+  bottom: -10rpx;
+  left: 0;
+  border-radius: 16rpx;
+}
+.welcome {
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 34rpx;
+  text-align: center;
+  margin: 20rpx;
+}
+.message {
+  line-height: 50rpx;
+  font-size: 28rpx;
+  text-indent: 60rpx;
+  margin: 20rpx;
+}
+.imgs {
+  text-align: center;
+}
+.imgs image {
+  width: 600rpx;
+  height: 600rpx;
+}
+.fixed {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 80rpx;
+}
+.cart {
+  width: 20%;
+  float: left;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #fff;
+  font-size: 28rpx;
+  text-align: center;
+  position: relative;
+  background: #fff;
+} 
+.qty {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background: red;
+  top: 5rpx;
+  right: 20rpx;
+  color: #fff;
+  width: 36rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  text-align: center;
+}
+.cart_img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 60rpx;
+  height: 60rpx;
+}
+.add, .buy {
+  width: 40%;
+  float: left;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #fff;
+  font-size: 28rpx;
+  text-align: center;
+}
+.add {
+  background: #000;
+}
+.buy {
+  background: red;
+}
