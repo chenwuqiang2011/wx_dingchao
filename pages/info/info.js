@@ -59,7 +59,71 @@ Page({
       }
     })
   },
-  onWalkTabClick: function(){console.log(888888888888888, 'walk')
+  upload: function(){
+    var that = this;
+    wx.chooseImage({
+      //count: 1, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function(res) {
+        console.log(res);
+        var tempFilePaths = res.tempFilePaths;
+
+        //判断用户选择了单张还是多张图片；
+        if(tempFilePaths.length <= 1){
+          //单张图片；
+          console.log('单张');
+          wx.uploadFile({
+            url: baseUrl + 'upload',
+            filePath: tempFilePaths[0],
+            name: 'file',
+            formData: {
+              'user': 'test'
+            },
+            'content-type': "multipart/form-data",
+            success: function (res) {
+              console.log(res)
+            },
+            fail: function (err) {
+              console.log(err)
+            }
+          })
+        } else {
+          //多张图片
+          console.log('多张');
+          wx.showLoading({
+            title: '上传中!',
+            iocn: null
+          });
+          tempFilePaths.map((item, idx) => {
+            
+            console.log(tempFilePaths[idx]);
+            
+            wx.uploadFile({
+              url: baseUrl + 'upload',
+              filePath: tempFilePaths[idx],
+              name: 'file',
+              formData: {
+                'user': 'test'
+              },
+              'content-type': "multipart/form-data",
+              success: function (res) {
+                console.log(res);
+                if (idx == (tempFilePaths.length - 1)) {
+                  // wx.hideLoading();
+                }
+              },
+              fail: function (err) {
+                console.log(err)
+              }
+            })
+          })
+        }
+        
+      },
+    })
+  },
+  onWalkTabClick: function(){
     this.setData({
       routeInfo: {
         startLat: '',    //起点经度 选填

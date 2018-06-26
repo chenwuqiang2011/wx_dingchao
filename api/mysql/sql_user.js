@@ -786,6 +786,9 @@ module.exports = {
 		};
 		
 		setInterval(token, 7200000);
+	},
+	upload: function(table, data, callback){
+		callback(data);
 	}
 }
 

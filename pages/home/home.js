@@ -389,6 +389,7 @@ Page({
     console.log('pullDown')
     wx.stopPullDownRefresh()
     
+    app.onLaunch();
     app.onShow();
     this.onLoad();
     this.setData({

@@ -5,6 +5,17 @@ var url =require("url");
 var urlencodedParser = bodyParser.urlencoded({ extended: true });
 var sql = require('../mysql/sql_user');
 
+//图片上传；
+var express = require('express');
+var router = express.Router();
+var formidable = require('formidable'),
+    fs = require('fs'),
+    TITLE = 'formidable上传示例',
+    AVATAR_UPLOAD_FOLDER = '/avatar/',
+    domain = 'http://192.168.1.186:999/';
+
+
+
 exports.register = function (app){
 	//用户登录；
 	app.post('/login', urlencodedParser, function(request, response){
@@ -131,7 +142,73 @@ exports.register = function (app){
 		sql.getToken('user', request.query, function(data){
 			response.send(data);
 		})
+	});
+	//上传图片；
+	app.post('/upload', function(req, res){
+		var form = new formidable.IncomingForm();   //创建上传表单
+		form.encoding = 'utf-8';        //设置编辑
+		form.uploadDir = 'public' + AVATAR_UPLOAD_FOLDER;     //设置上传目录  
+		  //app.use(express.static(path.join(path.resolve(__dirname,"../../"), '/')));// 指向前端静态文件夹dist
+		form.keepExtensions = true;     //保留后缀
+		form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
+
+		form.parse(req, function(err, fields, files) {
+
+		    if (err) {
+		      res.locals.error = err;
+		      // res.render('index', { title: TITLE });
+		      res.send('index', { title: TITLE });
+		      return;
+		    }
+		    console.log(fields, files);
+
+		    var extName = '';  //后缀名
+		    console.log(files.file.type);
+		    switch (files.file.type) {
+
+		      case 'image/pjpeg':
+		        extName = 'jpg';
+		        break;
+		      case 'image/jpeg':
+		        extName = 'jpg';
+		        break;
+		      case 'image/jpg':
+		        extName = 'jpg';
+		        break;
+		      case 'image/png':
+		        extName = 'png';
+		        break;
+		      case 'image/x-png':
+		        extName = 'png';
+		        break;
+		    }
+console.log('extName', extName)
+		    if(extName.length == 0){
+		      res.locals.error = '只支持png和jpg格式图片';
+		      res.send({msg: 'index', title: TITLE });
+		      return;
+		    }
+
+		    var avatarName = Math.random() + '.' + extName;
+		    //图片写入地址；
+		    var newPath = form.uploadDir + avatarName;
+		    //显示地址；
+		    var showUrl = domain + newPath;
+		    console.log("newPath",newPath);
+		    fs.renameSync(files.file.path, newPath);  //重命名
+
+		    //把图片地址写入数据库；
+
+		    
+		    res.send({
+		      "newPath":showUrl
+		    });
+		  });
+		// sql.upload('user', request, function(data){console.log(1234, request.body);
+		// 	response.send(data);
+		// })
 	})
+	
 }
 
 

@@ -55,7 +55,8 @@
  <button class = "contact" bindtap="toMap">公司位置</button> 
 <!-- <map-route route-info="{{routeInfo}}" bindtap = "toMap">123</map-route>  -->
 <!-- <map-route route-info="{{routeInfo}}">123</map-route> -->
-<form report-submit = "true"  bindsubmit="formSubmit">
+<!-- <form report-submit = "true"  bindsubmit="formSubmit">
   <input type = "text" />
   <button formType="submit">Submit</button>
-</form>
+</form> -->
+<button bindtap = "upload">上传图片</button>

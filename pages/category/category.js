@@ -273,11 +273,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    app.onLaunch();
     this.setData({
       tabs: app.data.goodslist
     })
     //商品详情点击加入购物车时，没有及时更新数量提示；
     app.addCart();
+
   },
 
   /**
