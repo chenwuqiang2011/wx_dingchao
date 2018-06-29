@@ -166,6 +166,67 @@ module.exports = {
 				callback({status: false, message: '没有查询到所有商品！', data: null});
 			}
 		})
+	},
+	getOrders: function(table, data, callback){
+		var defaultData = {pageNo: 1, qty: 10};
+		data = Object.assign(defaultData, data);
+		var pageNo = data.pageNo - 1;
+		var qty = data.qty;
+
+		var condition = 'select * from '+ table + ' limit ' + pageNo * qty + ' , ' + qty;
+		
+		var orders = [];
+		sql.query(condition, function(err, results, fields){
+
+			var condition2 = 'select * from '+ table;
+			sql.query(condition2, function(err2, results2, fields2){
+				var total = results2.length;
+				results.map((item, idx)=>{
+				var status = '';
+				var obj = {}
+				switch(item.status){
+					case 0:
+						status = '待支付';
+						break;
+					case 1:
+						status = '待发货';
+						break;
+					case 2:
+						status = '待收货';
+						break;
+					case 3:
+						status = '已收货';
+						break;
+					case 4:
+						status = '已关闭';
+						break;
+					case 5:
+						status = '待评价';
+						break;
+					default:
+						status = '错误'
+				}
+
+				obj.orderId = item.orderId;
+				obj.orderNo = item.orderNo;
+				obj.username = item.username;
+				obj.goods = JSON.parse(item.goods);
+				obj.address = JSON.parse(item.address);
+				obj.price = item.price.toFixed(2);
+				obj.qty = item.qty;
+				obj.paid = item.paid;
+				obj.express = item.express;
+				obj.msg = item.msg;
+				obj.status = status;
+				obj.createTime = item.createTime;
+				obj.completeTime = item.completeTime;
+				orders.unshift(obj);
+			})
+			callback({status: true, message: '订单查询成功', data: orders, total: total});
+			})
+
+			
+		})
 	}
 }
 

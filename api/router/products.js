@@ -59,6 +59,13 @@ exports.register = function (app){
 			response.send(data);
 		})
 	});
-	
+
+	//管理后台获取订单；
+	app.post('/getOrders', urlencodedParser, function(request, response){
+		console.log(123, request.body);
+		sql.getOrders('ordering', request.body, function(data){
+			response.send(data);
+		})
+	});	
 	
 }

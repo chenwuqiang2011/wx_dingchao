@@ -118,6 +118,22 @@ exports.register = function (app){
 			response.send(data);
 		})
 	});
+
+	
+	//发货订单；
+	app.post('/delivery', urlencodedParser, function(request, response){
+		sql.delivery('ordering', request.body, function(data){
+			response.send(data);
+		})
+	});
+	//获取用户；
+	app.post('/getUsers', urlencodedParser, function(request, response){
+		sql.getUsers('user', request.body, function(data){
+			response.send(data);
+		})
+	});
+
+
 	//快递api;
 	app.post('/express', urlencodedParser, function(request, response){
 		sql.express('user', request.body, function(data){

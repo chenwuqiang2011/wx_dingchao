@@ -13,6 +13,9 @@ var client = redis.createClient();
 var session = require('express-session');
 var redisStore = require('connect-redis')(session);
 
+
+//url模块；
+var url = require('url');
 // MD5
 var md5 = require('md5');
 
@@ -479,26 +482,50 @@ module.exports = {
 			callback({status: true, message: '订单已关闭', data: results});
 		} )
 	},
+	//发货订单；
+	delivery: function(table, data, callback){
+		console.log(data)
+		
+		var params = [data.status, data.orderId];
+		var condition = 'UPDATE ordering SET status = "' + data.status + '" WHERE orderId = "' + data.orderId + '"';
+		sql.query(condition, function(err, results, fields){console.log(results)
+			callback({status: true, message: '订单已更新为待发货', data: results});
+		} )
+	},
+	//获取用户；
+	getUsers: function(table, data, callback){
+		var condition = 'select * from '+ table;
+		sql.query(condition, function(err, results, fields){
+			console.log(123456, results);
+			callback({status: true, message: '查询到用户列表！', data: results})
+		})
+			
+	},
 	express: function(table, data, callback){
 		var userID = '1347013';
 		var keyValue = 'b6b4fba5-b2ab-4d6e-a244-4d3eca36c76e';
-		var url = 'http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx';
 		
 		var DataType = '2';
 		var charset = 'UTF-8';
-		var str = { OrderCode:'', ShipperCode: 'SF', LogisticCode: 118461988807 };
-
-		var jsonStr = new Buffer(JSON.stringify(str));
-		var res = jsonStr.toString('base64');
-		res = md5(res + keyValue);
+		var str = {OrderCode:'',ShipperCode:'SF',LogisticCode:'118954907573'} //118461988807
+		var jsonStr = JSON.stringify(str);
 
 
-		var PostStr = 'RequestType=1002&EBusinessID= userID &RequestData=jsonStr&DataSign= datasign&DataType=DataType';
+		//进行url 编码转换；
+		var jsonStr_url = encodeURIComponent(jsonStr);
+		console.log(jsonStr_url)
+
+		var datasign = md5(jsonStr + keyValue);
+		// var datasign = crypto.createHash('md5').update(jsonStr + keyValue).digest('hex');
+		datasign = datasign.toString('base64');
+		datasign = encodeURIComponent(datasign);
 
 
-		var postData=qs.stringify({  
-		    msg: PostStr  
-		});  
+		var PostStr = 'RequestType=1002&EBusinessID='+userID+'&RequestData='+jsonStr_url+'&DataSign='+datasign+'&DataType='+ DataType;
+
+
+		var postData=qs.stringify(PostStr);  
+		console.log(PostStr)
 		var options={  
 		   hostname:'http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx',  
 		   path:'/',  
@@ -509,18 +536,18 @@ module.exports = {
 		    'Content-Length':Buffer.byteLength(postData)  
 		   }  
 		}  
-		var req = http.request(options, function(res) {  
-		    console.log('Status:',res.statusCode);  
-		    console.log('headers:',JSON.stringify(res.headers));  
-		    res.setEncoding('utf-8');  
-		    res.on('data',function(chun){  
-		        console.log('body分隔线---------------------------------\r\n');  
-		        console.info(chun);  
-		    });  
-		    res.on('end',function(){  
-		        console.log('No more data in response.********');  
-		    });  
-		});  
+        request({  
+            url: 'http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx',  
+            method: 'POST',  
+            body: postData,
+            headers:{  
+		    'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',  
+		   }    
+        }, function(err, response, body) {  
+            if (!err && response.statusCode == 200) {
+            	console.log(body)
+           }
+        });  
 	},
 	//订单支付；
 	toPaid: function(table, data, callback){
